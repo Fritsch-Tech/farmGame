@@ -4,13 +4,13 @@ require_once "util/DBConnection.php";
 
 session_start();
 if(!isset($_SESSION['login'])) {
-	header('LOCATION:admin.php'); die();
+	header('LOCATION: /admin.php');
+	die();
 }
-
 error_reporting(E_ALL ^ E_NOTICE);
 
 
-if(isset(strip_tags($_POST['form_username']))){
+if(isset($_POST['form_username'])){
 	$form_username = strip_tags($_POST['form_username']);
 
 	$db = DBConnection::getConnection();

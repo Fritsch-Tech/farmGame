@@ -1,10 +1,4 @@
 Options +FollowSymLinks
 RewriteEngine On
 
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
-
-RewriteRule ^login ./login.php
-RewriteRule ^admin ./admin.php
-
-RewriteRule ^search/(.*)$ ./search.php?query=$1
+RewriteBase /
