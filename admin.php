@@ -41,8 +41,8 @@
             echo('
                 <tr>
                     <td>'.$user->id.'</td>
-                    <td>'.$user->vName.'</td>
-                    <td>'.$user->nName.'</td>
+                    <td>'.$user->name.'</td>
+                    <td>'.$user->surname.'</td>
                     <td>'.$user->username.'</td>
                     <td>'.$user->eMail.'</td>
                     <td>'.$user->passwort.'</td>

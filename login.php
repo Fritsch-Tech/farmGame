@@ -10,8 +10,8 @@ if(!isset($_SESSION['login'])) {
 error_reporting(E_ALL ^ E_NOTICE);
 
 
-if(isset($_POST['form_username'])){
-	$form_username = $_POST['form_username'];
+if(isset(strip_tags($_POST['form_username']))){
+	$form_username = strip_tags($_POST['form_username']);
 
 	$db = DBConnection::getConnection();
 	$stmt = $db->prepare("SELECT * FROM user WHERE username = :username");
@@ -21,7 +21,7 @@ if(isset($_POST['form_username'])){
 	$data = $stmt->fetch(PDO::FETCH_OBJ);
 	$_SESSION['username'] = $data->username;
 
-	if(password_verify((string)$_POST['form_pw'],(string)$data->passwort)){
+	if(password_verify((string)strip_tags($_POST['form_pw']),(string)$data->hash)){
 		$_SESSION['login'] = true;
 		header('LOCATION:admin.php');
 		die();
