@@ -1,9 +1,12 @@
 <?php
     require_once "util/DBConnection.php";
     session_start();
-    if(!isset($_SESSION['login'])) {
-        header('LOCATION:login.php'); die();
+
+    if($_SESSION['login'] !== True) {
+        header('LOCATION:login.php');
+        die();
     }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,19 +21,16 @@
 	<title>Admin</title>
 </head>
     <body>
+        <table class="table table-striped table-dark table-bordered">
+        <tr>
+            <th>id</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>username</th>
+            <th>eMail</th>
+            <th>Hash</th>
+        </tr>
         <?php
-        echo('
-            <table class="table table-striped table-dark table-bordered">
-            <tr>
-                <th>id</th>
-                <th>Vorname</th>
-                <th>Nachname</th>
-                <th>username</th>
-                <th>eMail</th>
-                <th>Hash</th>
-            </tr>
-
-        ');
         $db = DBConnection::getConnection();
         $stmt = $db->prepare("SELECT * FROM user");
         $stmt->bindParam(':username',	$_SESSION['username']);
@@ -49,14 +49,9 @@
                 </tr>
             ');
         }
-
-        echo('</table>');
-        echo '<br/><a href="login.php"><button>RELOAD</button></a><br/>';
-        if($_SESSION['login']==1){
-            echo '<a href="login.php?logout=1"><button>LOGOUT</button></a><br/>';
-        }
-        echo '  </body></html>';
         ?>
-?>
+        </table>
+        <br/><button onclick='window.location.reload(true);'>RELOAD</button></a><br/>
+        <a href="login.php"><button>LOGOUT</button></a><br/>
     </body>
 </html>

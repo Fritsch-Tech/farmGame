@@ -3,9 +3,8 @@
 require_once "util/DBConnection.php";
 
 session_start();
-if(!isset($_SESSION['login'])) {
-	header('LOCATION:admin.php'); die();
-}
+$_SESSION['login'] = false;
+
 
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -26,13 +25,7 @@ if(isset($_POST['form_username'])){
 		header('LOCATION:admin.php');
 		die();
 	}
-
 }
-
-if($_GET['logout']== 1){
-	$_SESSION['login'] = 0;
-}
-
 ?>
 
 <!doctype html>
@@ -48,22 +41,15 @@ if($_GET['logout']== 1){
 	<title>Login</title>
 </head>
 <body>
-	<h1>
-		<?php
-		echo 'Login Klasse <br />';
-		?>
-	</h1>
+	<h1>Login Klasse</h1>
 
-	<?php
-
-	echo
-	'
 	<form class="form-inline" action="login.php" method="post">
-	<div class="form-group mx-sm-3 mb-2">
-	<label for="inputPassword2" class="sr-only">Password</label>
-	<input type="text" class="form-control" name="form_username" placeholder="Username">
-	<input type="password" class="form-control" id="inputPassword2" name="form_pw" placeholder="Password">
-	</div>
-	<button type="submit" class="btn btn-primary mb-2">Login</button>
+		<div class="form-group mx-sm-3 mb-2">
+			<label for="inputPassword2" class="sr-only">Password</label>
+			<input type="text" class="form-control" name="form_username" placeholder="Username">
+			<input type="password" class="form-control" id="inputPassword2" name="form_pw" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary mb-2">Login</button>
 	</form>
-	';
+</body>
+</html>
