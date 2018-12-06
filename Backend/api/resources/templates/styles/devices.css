@@ -1,0 +1,9 @@
+.devicelist{
+    padding-left: 0;
+}
+.devicelist-item{
+    padding-left: 15px;
+}
+.sensorSeperator{
+    margin-left: -10px;
+}

@@ -1,0 +1,13 @@
+#dropdown:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-menu{
+    margin-top: 0px;
+}
+#userMenu{
+    margin-left: -90px;
+}
+#notify-dropdown{
+    margin-left: -220px;
+    width: 300px;
+}
